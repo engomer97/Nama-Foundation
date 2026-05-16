@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>مؤسسة نماء المستديمة | تصميم 3D | مقاولات وتنسيق حدائق السعودية</title>
+  <meta name="description" content="مؤسسة نماء المستديمة - رؤية ثلاثية الأبعاد مستوحاة من أشجار المملكة. حلول متكاملة للمقاولات، تنسيق الحدائق، وصيانة المنتزهات.">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #eef4e6;
+      color: #1f2e1a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      transition: all 0.2s;
+    }
+
+    body[dir="ltr"] {
+      direction: ltr;
+      text-align: left;
+    }
+    body[dir="ltr"] .container,
+    body[dir="ltr"] .navbar,
+    body[dir="ltr"] .hero-content,
+    body[dir="ltr"] .section-title:after {
+      right: auto;
+      left: 0;
+    }
+    body[dir="ltr"] .section-title:after {
+      left: 0;
+      right: auto;
+    }
+    body[dir="ltr"] .nav-links a::after {
+      right: auto;
+      left: 0;
+    }
+    body[dir="ltr"] .btn-primary::before {
+      margin-left: 0;
+      margin-right: 10px;
+    }
+    body[dir="ltr"] .btn-outline::after {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(245, 250, 235, 0.94);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 28px -8px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(80, 130, 70, 0.3);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      flex-wrap: wrap;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #1f5430, #398554, #64b87a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+    }
+    .logo h1::before {
+      content: "🌳 ";
+      font-size: 1.8rem;
+      background: none;
+      -webkit-background-clip: unset;
+      color: #2a6e3a;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2c4b2a;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-links li a i {
+      margin-left: 8px;
+      font-size: 1rem;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      right: 0;
+      width: 0;
+      height: 3px;
+      background: #3f9b5e;
+      transition: 0.3s;
+      border-radius: 4px;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .lang-switch {
+      background: #2f6b3e;
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.2);
+      border: 2px solid #c7e9b0;
+    }
+    .lang-switch:hover {
+      transform: scale(1.1) rotate(5deg);
+      background: #1f4e2d;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #2f6b3e;
+    }
+
+    .btn-primary, .btn-outline {
+      display: inline-block;
+      padding: 14px 34px;
+      border-radius: 60px;
+      font-weight: 800;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      font-size: 1rem;
+      box-shadow: 0 12px 20px -8px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(125deg, #2a7942, #155c2c);
+      color: white;
+      border: none;
+    }
+    .btn-primary i {
+      margin-left: 8px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    .btn-outline {
+      background: rgba(250, 255, 240, 0.9);
+      border: 2px solid #267a42;
+      color: #1a5832;
+    }
+    .btn-outline i {
+      margin-right: 8px;
+    }
+    .btn-outline:hover {
+      transform: translateY(-4px);
+      background: #e5f5e0;
+    }
+
+    /* Hero Section - خلفية حديقة جميلة مع تحسين تباين النص */
+    .hero {
+      min-height: 90vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: url('https://images.pexels.com/photos/158028/bellingrath-gardens-alabama-landscape-scenic-158028.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    /* طبقة داكنة شفافة فوق الخلفية لضمان وضوح النص دون التأثير على جمال الصورة */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45); /* درجة شفافية معتدلة تبرز النص وتحافظ على جمال الحديقة */
+      z-index: 1;
+      pointer-events: none;
+    }
+    /* أوراق عائمة فوق الطبقة */
+    .floating-leaf {
+      position: absolute;
+      font-size: 2rem;
+      color: rgba(230, 255, 200, 0.75);
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
+      animation: floatLeaf 16s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 2;
+    }
+    @keyframes floatLeaf {
+      0% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+      50% { transform: translateY(-40px) rotate(12deg); opacity: 0.9; }
+      100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+    }
+
+    .hero-content {
+      max-width: 700px;
+      color: white;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      position: relative;
+      z-index: 3;
+      transform: translateZ(40px);
+      animation: fadeSlideUp 1s ease-out;
+    }
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff, #f0ffe0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
+    }
+    .hero-content p {
+      font-size: 1.3rem;
+      font-weight: 500;
+      background: rgba(0,0,0,0.3);
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 40px;
+      backdrop-filter: blur(3px);
+    }
+
+    .services-grid, .plants-grid, .why-grid, .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card, .plant-card, .why-card, .project-card {
+      background: rgba(255, 255, 248, 0.92);
+      backdrop-filter: blur(4px);
+      border-radius: 36px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(100, 150, 80, 0.4);
+    }
+
+    .service-card:hover, .plant-card:hover, .why-card:hover, .project-card:hover {
+      transform: translateY(-12px) scale(1.02) rotateX(3deg);
+      background: white;
+    }
+
+    .service-card i, .plant-card i, .why-card i {
+      font-size: 3rem;
+      color: #2f8546;
+      margin-bottom: 16px;
+    }
+    
+    /* تنسيق خاص لبطاقات النباتات */
+    .plants-grid .plant-card {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      text-align: right;
+      padding: 18px 24px;
+    }
+    .plants-grid .plant-card i {
+      font-size: 2.5rem;
+      margin-bottom: 0;
+      width: 50px;
+    }
+    .plants-grid .plant-card span {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .about-3d {
+      background: linear-gradient(125deg, #f6fcee, #ffffff);
+      border-radius: 58px;
+      padding: 36px 32px;
+      box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.15);
+      transform: translateZ(15px);
+      border: 1px solid rgba(130, 180, 100, 0.5);
+    }
+
+    .project-img {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s;
+    }
+    .project-card:hover .project-img {
+      transform: scale(1.06);
+    }
+    .project-info {
+      padding: 18px;
+      background: #ffffffd9;
+      font-weight: 700;
+    }
+    .project-info i {
+      margin-left: 8px;
+      color: #2a7942;
+    }
+
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 35px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .contact-info, .contact-form {
+      flex: 1;
+      min-width: 280px;
+      background: rgba(255, 255, 250, 0.96);
+      backdrop-filter: blur(8px);
+      border-radius: 48px;
+      padding: 34px 30px;
+      box-shadow: 0 30px 40px -18px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s;
+      border: 1px solid #d0e5be;
+    }
+    .contact-info:hover, .contact-form:hover {
+      transform: translateY(-8px);
+    }
+    .contact-detail {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .contact-detail i {
+      font-size: 1.8rem;
+      color: #398a53;
+      width: 2rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 14px 20px;
+      margin: 12px 0;
+      border: 1.5px solid #cde0bc;
+      border-radius: 56px;
+      font-family: 'Cairo', sans-serif;
+      background: #fffff7;
+    }
+    input:focus, textarea:focus {
+      border-color: #48a06b;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(70, 140, 70, 0.2);
+    }
+    .google-map-placeholder {
+      margin-top: 24px;
+      background: #b8cfaa;
+      border-radius: 32px;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Google_Maps_Logo_2020.svg/1280px-Google_Maps_Logo_2020.svg.png');
+      background-size: 70px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #e0f0da;
+    }
+
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 48px;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(125deg, #1c4d28, #3b8b58);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .section-title i {
+      margin-left: 12px;
+      font-size: 2rem;
+      color: #2f8546;
+      background: none;
+      -webkit-background-clip: unset;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      right: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #60b275, #2a7342);
+      border-radius: 4px;
+    }
+
+    footer {
+      background: #0a2a10;
+      color: #deecd2;
+      padding: 48px 0 24px;
+    }
+    footer a {
+      color: #deecd2;
+      text-decoration: none;
+    }
+    footer a i {
+      margin-left: 6px;
+    }
+    .social-icons i {
+      font-size: 1.8rem;
+      margin-left: 18px;
+      transition: 0.2s;
+    }
+    .social-icons i:hover {
+      transform: translateY(-5px);
+      color: #b8f0b0;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      left: 28px;
+      background: radial-gradient(circle at 30% 25%, #2de06c, #159c47);
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 36px;
+      line-height: 64px;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.25);
+      z-index: 999;
+      transition: 0.2s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 950px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        gap: 18px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-icon {
+        display: block;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .contact-flex {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body dir="rtl">
+<!-- أوراق عائمة -->
+<div class="floating-leaf" style="top: 12%; right: 5%;"><i class="fas fa-palm-tree"></i></div>
+<div class="floating-leaf" style="bottom: 15%; left: 4%; animation-duration: 19s; font-size: 2.5rem;"><i class="fas fa-tree"></i></div>
+<div class="floating-leaf" style="top: 40%; left: 10%; animation-duration: 13s;"><i class="fas fa-seedling"></i></div>
+<div class="floating-leaf" style="bottom: 30%; right: 12%; animation-duration: 18s;"><i class="fas fa-leaf"></i></div>
+
+<!-- شريط التنقل -->
+<div class="navbar">
+  <div class="container nav-container">
+    <div class="logo"><h1>مؤسسة نماء المستديمة</h1></div>
+    <div class="menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-key="navHome"><i class="fas fa-home"></i> الرئيسية</a></li>
+      <li><a href="#about" data-key="navAbout"><i class="fas fa-info-circle"></i> من نحن</a></li>
+      <li><a href="#services" data-key="navServices"><i class="fas fa-leaf"></i> خدماتنا</a></li>
+      <li><a href="#plants" data-key="navPlants"><i class="fas fa-tree"></i> نباتات السعودية</a></li>
+      <li><a href="#projects" data-key="navProjects"><i class="fas fa-images"></i> مشاريعنا</a></li>
+      <li><a href="#whyus" data-key="navWhy"><i class="fas fa-question-circle"></i> لماذا نحن</a></li>
+      <li><a href="#contact" data-key="navContact"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+      <li><div class="lang-switch" id="langSwitchBtn" title="Change Language / تغيير اللغة"><i class="fas fa-tree"></i></div></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Hero Section - خلفية حديقة رائعة مع تحسين وضوح النص -->
+<section id="home" class="hero">
+  <div class="container hero-content">
+    <h1 data-key="heroTitle">طبيعة السعودية<br>بأبعاد ثلاثية</h1>
+    <p data-key="heroSub"><i class="fas fa-dove"></i> أشجار النخيل، الأكاسيا، والسدر .. تصميم حدائق يعكس هوية المملكة</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary" data-key="heroBtn1"><i class="fas fa-headset"></i> استشارة مجانية</a>
+      <a href="#services" class="btn-outline" data-key="heroBtn2"><i class="fas fa-cogs"></i> خدماتنا</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title" data-key="aboutTitle"><i class="fas fa-seedling"></i> من نحن</h2>
+    <div class="about-3d">
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+        <div style="flex: 2;">
+          <p style="font-size: 1.2rem; line-height: 1.7;" data-key="aboutText">مؤسسة <strong>نماء المستديمة</strong> مستوحاة من أشجار المملكة العربية السعودية العريقة، نقدم حلولاً ثلاثية الأبعاد في المقاولات وتنسيق الحدائق. نمتلك خبرة لأكثر من 12 عاماً في إنشاء وصيانة المنتزهات باستخدام أنظمة الري الذكي والتشجير بأنواع محلية مثل <strong>الطلح، الأكاسيا، النخيل، السدر</strong>. رؤيتنا تحقيق الاستدامة الخضراء وفق رؤية 2030.</p>
+          <div style="margin-top: 20px; background: #e1f0da; border-radius: 40px; padding: 12px 22px; display: inline-block;">
+            <i class="fas fa-id-card"></i> <span data-key="aboutLicense">السجل: 7054207274 | ترخيص: 471123616441 – أمانة نجران</span>
+          </div>
+        </div>
+        <div style="flex:1; text-align: center;">
+          <i class="fas fa-tree" style="font-size: 5rem; color: #397e4a;"></i>
+          <p data-key="aboutIconText"><i class="fas fa-heart"></i> أشجارنا .. هوية المملكة</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" style="background: #f8fdf2;">
+  <div class="container">
+    <h2 class="section-title" data-key="servicesTitle"><i class="fas fa-hard-hat"></i> خدمات احترافية 3D</h2>
+    <div class="services-grid">
+      <div class="service-card"><i class="fas fa-tree"></i><h3 data-key="serv1">تنسيق حدائق نخيل</h3><p data-key="serv1desc">تصاميم بأشجار النخيل والأكاسيا</p></div>
+      <div class="service-card"><i class="fas fa-leaf"></i><h3 data-key="serv2">صيانة منتزهات</h3><p data-key="serv2desc">رعاية المساحات الخضراء العامة</p></div>
+      <div class="service-card"><i class="fas fa-hard-hat"></i><h3 data-key="serv3">مقاولات خضراء</h3><p data-key="serv3desc">بنية تحتية صديقة للبيئة</p></div>
+      <div class="service-card"><i class="fas fa-seedling"></i><h3 data-key="serv4">تشجير محلي</h3><p data-key="serv4desc">زراعة أشجار السدر والطلح</p></div>
+      <div class="service-card"><i class="fas fa-water"></i><h3 data-key="serv5">ري ذكي</h3><p data-key="serv5desc">توفير المياه بأنظمة متطورة</p></div>
+      <div class="service-card"><i class="fas fa-cut"></i><h3 data-key="serv6">تقليم فني</h3><p data-key="serv6desc">تشذيب احترافي للنخيل</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Plants section - أيقونات مخصصة لكل شجرة -->
+<section id="plants">
+  <div class="container">
+    <h2 class="section-title" data-key="plantsTitle"><i class="fas fa-palm-tree"></i> أشجار السعودية الأصيلة</h2>
+    <div class="plants-grid" id="plantsGrid"></div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" style="background: #f3f8ec;">
+  <div class="container">
+    <h2 class="section-title" data-key="projectsTitle"><i class="fas fa-camera-retro"></i> معرض المشاريع - حدائق المملكة</h2>
+    <div class="project-grid" id="projectGrid"></div>
+  </div>
+</section>
+
+<!-- Why us -->
+<section id="whyus">
+  <div class="container">
+    <h2 class="section-title" data-key="whyTitle"><i class="fas fa-star-of-life"></i> لماذا نماء المستديمة؟</h2>
+    <div class="why-grid" id="whyGrid"></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="background: #eef3e2;">
+  <div class="container">
+    <h2 class="section-title" data-key="contactTitle"><i class="fas fa-phone-alt"></i> تواصل مع الفريق</h2>
+    <div class="contact-flex">
+      <div class="contact-info">
+        <div class="contact-detail"><i class="fas fa-phone-alt"></i> <span><strong data-key="phoneLabel">هاتف:</strong> 0553103281</span></div>
+        <div class="contact-detail"><i class="fas fa-envelope"></i> <span><strong data-key="emailLabel">البريد:</strong> mahdi170@icloud.com</span></div>
+        <div class="contact-detail"><i class="fab fa-whatsapp"></i> <span><strong data-key="whatsLabel">واتساب:</strong> 0553103281</span></div>
+        <div class="contact-detail"><i class="fas fa-building"></i> <span><strong data-key="licenseLabel">الترخيص:</strong> 471123616441 - أمانة نجران</span></div>
+        <div class="google-map-placeholder">
+          <span style="background: rgba(0,0,0,0.65); padding: 8px 24px; border-radius: 60px; color: #fff4cf;" data-key="mapText"><i class="fas fa-map-marker-alt"></i> 📍 نجران - قلب المملكة الأخضر</span>
+        </div>
+        <p style="margin-top: 20px; font-weight: bold;" data-key="serviceAll"><i class="fas fa-globe-asia"></i> نخدم جميع مناطق السعودية بأشجار وطنية</p>
+      </div>
+      <div class="contact-form">
+        <h3><i class="fas fa-leaf"></i> <span data-key="formTitle">أرسل تفاصيل مشروعك</span></h3>
+        <form id="contactForm">
+          <input type="text" placeholder="الاسم الكامل" data-key-placeholder="namePlace" required>
+          <input type="email" placeholder="البريد الإلكتروني" data-key-placeholder="emailPlace" required>
+          <input type="tel" placeholder="رقم الجوال" data-key-placeholder="phonePlace">
+          <textarea rows="4" placeholder="نوع الخدمة أو استفسارك عن الأشجار السعودية..." data-key-placeholder="msgPlace"></textarea>
+          <button type="submit" class="btn-primary" style="border:none; width:100%;"><i class="fas fa-paper-plane"></i> <span data-key="sendBtn">إرسال الطلب</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px;">
+    <div><h3><i class="fas fa-tree"></i> نماء المستديمة</h3><p data-key="footerText"><i class="fas fa-hand-sparkles"></i> رعاية مستدامة لأشجار المملكة بلمسة 3D.</p></div>
+    <div><h4 data-key="quickLinks"><i class="fas fa-link"></i> روابط سريعة</h4><ul style="list-style: none; line-height: 2;">
+      <li><a href="#home" data-key="homeLink"><i class="fas fa-home"></i> الرئيسية</a></li>
+      <li><a href="#services" data-key="servLink"><i class="fas fa-leaf"></i> خدماتنا</a></li>
+      <li><a href="#contact" data-key="contactLink"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
+    </ul></div>
+    <div><h4 data-key="contactFooter"><i class="fas fa-address-card"></i> تواصل</h4><p><i class="fas fa-phone"></i> 0553103281</p><p><i class="fas fa-envelope"></i> mahdi170@icloud.com</p><div class="social-icons"><i class="fab fa-twitter"></i><i class="fab fa-instagram"></i><i class="fab fa-snapchat"></i></div></div>
+  </div>
+  <div class="container" style="text-align: center; border-top: 1px solid #2f6a3a; margin-top: 32px; padding-top: 20px;"><p data-key="copyright"><i class="fas fa-copyright"></i> © 2025 مؤسسة نماء المستديمة - مستوحاة من أشجار السعودية</p></div>
+</footer>
+
+<a href="https://wa.me/966553103281?text=مرحباً، أرغب في تصميم حديقة بأشجار سعودية" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+  // قائمة الأشجار مع الأيقونات المخصصة لكل نوع
+  const treesData = [
+    { name: "النخيل", icon: "fas fa-palm-tree" },
+    { name: "الأكاسيا", icon: "fas fa-leaf" },
+    { name: "الطلح", icon: "fas fa-tree" },
+    { name: "السدر", icon: "fas fa-seedling" },
+    { name: "البركنسونيا", icon: "fas fa-feather-alt" },
+    { name: "اللبخ", icon: "fas fa-fill-drip" },
+    { name: "الجهنميات", icon: "fas fa-cactus" },
+    { name: "التكيوما", icon: "fas fa-flower" }
+  ];
+  
+  const treesDataEn = [
+    { name: "Palms", icon: "fas fa-palm-tree" },
+    { name: "Acacia", icon: "fas fa-leaf" },
+    { name: "Talh", icon: "fas fa-tree" },
+    { name: "Sidr", icon: "fas fa-seedling" },
+    { name: "Parkinsonia", icon: "fas fa-feather-alt" },
+    { name: "Ficus", icon: "fas fa-fill-drip" },
+    { name: "Euphorbia", icon: "fas fa-cactus" },
+    { name: "Tecoma", icon: "fas fa-flower" }
+  ];
+
+  const translations = {
+    ar: {
+      navHome: "الرئيسية", navAbout: "من نحن", navServices: "خدماتنا", navPlants: "نباتات السعودية",
+      navProjects: "مشاريعنا", navWhy: "لماذا نحن", navContact: "اتصل بنا",
+      heroTitle: "طبيعة السعودية<br>بأبعاد ثلاثية", heroSub: "أشجار النخيل، الأكاسيا، والسدر .. تصميم حدائق يعكس هوية المملكة",
+      heroBtn1: "استشارة مجانية", heroBtn2: "خدماتنا",
+      aboutTitle: "من نحن", aboutText: "مؤسسة <strong>نماء المستديمة</strong> مستوحاة من أشجار المملكة العربية السعودية العريقة، نقدم حلولاً ثلاثية الأبعاد في المقاولات وتنسيق الحدائق. نمتلك خبرة لأكثر من 12 عاماً في إنشاء وصيانة المنتزهات باستخدام أنظمة الري الذكي والتشجير بأنواع محلية مثل <strong>الطلح، الأكاسيا، النخيل، السدر</strong>. رؤيتنا تحقيق الاستدامة الخضراء وفق رؤية 2030.",
+      aboutLicense: "السجل: 7054207274 | ترخيص: 471123616441 – أمانة نجران", aboutIconText: "أشجارنا .. هوية المملكة",
+      servicesTitle: "خدمات احترافية 3D",
+      serv1: "تنسيق حدائق نخيل", serv1desc: "تصاميم بأشجار النخيل والأكاسيا",
+      serv2: "صيانة منتزهات", serv2desc: "رعاية المساحات الخضراء العامة",
+      serv3: "مقاولات خضراء", serv3desc: "بنية تحتية صديقة للبيئة",
+      serv4: "تشجير محلي", serv4desc: "زراعة أشجار السدر والطلح",
+      serv5: "ري ذكي", serv5desc: "توفير المياه بأنظمة متطورة",
+      serv6: "تقليم فني", serv6desc: "تشذيب احترافي للنخيل",
+      plantsTitle: "أشجار السعودية الأصيلة",
+      whyTitle: "لماذا نماء المستديمة؟",
+      projectsTitle: "معرض المشاريع - حدائق المملكة",
+      contactTitle: "تواصل مع الفريق",
+      phoneLabel: "هاتف:", emailLabel: "البريد:", whatsLabel: "واتساب:", licenseLabel: "الترخيص:",
+      mapText: "📍 نجران - قلب المملكة الأخضر", serviceAll: "نخدم جميع مناطق السعودية بأشجار وطنية",
+      formTitle: "أرسل تفاصيل مشروعك", sendBtn: "إرسال الطلب",
+      footerText: "رعاية مستدامة لأشجار المملكة بلمسة 3D.", quickLinks: "روابط سريعة", contactFooter: "تواصل",
+      copyright: "© 2025 مؤسسة نماء المستديمة - مستوحاة من أشجار السعودية",
+      homeLink: "الرئيسية", servLink: "خدماتنا", contactLink: "اتصل بنا",
+      namePlace: "الاسم الكامل", emailPlace: "البريد الإلكتروني", phonePlace: "رقم الجوال", msgPlace: "نوع الخدمة أو استفسارك عن الأشجار السعودية...",
+      whyCards: [
+        {title:"تصميم 3D",desc:"رؤية واقعية للمشاريع"},{title:"خبرة سعودية",desc:"فهم البيئة المحلية"},
+        {title:"تنفيذ سريع",desc:"الالتزام بالجداول"},{title:"فريق متخصص",desc:"مهندسون زراعيون"},
+        {title:"أسعار شفافة",desc:"جودة عالية بأسعار منافسة"},{title:"استدامة 2030",desc:"نساهم في رؤية السعودية الخضراء"}
+      ],
+      projectNames: ["واحة نخيل في نجران","حدائق الأكاسيا","منتزه السدر","تشجير الطرق بعسير","الري الذكي","حدائق الرياض الحيوية","حديقة النباتات المحلية","مركز زراعة النخيل"]
+    },
+    en: {
+      navHome: "Home", navAbout: "About", navServices: "Services", navPlants: "Saudi Plants",
+      navProjects: "Projects", navWhy: "Why Us", navContact: "Contact",
+      heroTitle: "Nature of Saudi<br>in 3D Dimensions", heroSub: "Palms, Acacia, and Sidr trees .. garden design reflecting the Kingdom's identity",
+      heroBtn1: "Free Consultation", heroBtn2: "Our Services",
+      aboutTitle: "About Us", aboutText: "<strong>Namaa AlMustadima</strong> inspired by the ancient trees of Saudi Arabia, offering 3D solutions in contracting and landscaping. With over 12 years of experience in creating and maintaining parks using smart irrigation and local species like Talh, Acacia, Palms, and Sidr. Our vision is to achieve green sustainability under Saudi Vision 2030.",
+      aboutLicense: "CR: 7054207274 | License: 471123616441 – Najran Municipality", aboutIconText: "Our trees .. the identity of the Kingdom",
+      servicesTitle: "Professional 3D Services",
+      serv1: "Palm Garden Design", serv1desc: "Designs with palms and acacia",
+      serv2: "Park Maintenance", serv2desc: "Care for public green spaces",
+      serv3: "Green Contracting", serv3desc: "Eco-friendly infrastructure",
+      serv4: "Local Afforestation", serv4desc: "Planting Sidr and Talh trees",
+      serv5: "Smart Irrigation", serv5desc: "Water-saving advanced systems",
+      serv6: "Artistic Pruning", serv6desc: "Professional palm trimming",
+      plantsTitle: "Authentic Saudi Trees",
+      whyTitle: "Why Choose Namaa?",
+      projectsTitle: "Project Gallery - Kingdom Gardens",
+      contactTitle: "Contact the Team",
+      phoneLabel: "Phone:", emailLabel: "Email:", whatsLabel: "WhatsApp:", licenseLabel: "License:",
+      mapText: "📍 Najran - Heart of Green Saudi", serviceAll: "Serving all regions of Saudi with native trees",
+      formTitle: "Send Your Project Details", sendBtn: "Send Request",
+      footerText: "Sustainable care for Saudi trees with a 3D touch.", quickLinks: "Quick Links", contactFooter: "Contact",
+      copyright: "© 2025 Namaa AlMustadima - Inspired by Saudi trees",
+      homeLink: "Home", servLink: "Services", contactLink: "Contact",
+      namePlace: "Full Name", emailPlace: "Email Address", phonePlace: "Mobile Number", msgPlace: "Service type or inquiry about Saudi trees...",
+      whyCards: [
+        {title:"3D Design",desc:"Realistic project visualization"},{title:"Saudi Expertise",desc:"Understanding local environment"},
+        {title:"Fast Execution",desc:"Commitment to schedules"},{title:"Specialized Team",desc:"Agricultural engineers"},
+        {title:"Transparent Prices",desc:"High quality at competitive rates"},{title:"2030 Sustainability",desc:"Contributing to Saudi Green Vision"}
+      ],
+      projectNames: ["Palm Oasis in Najran","Acacia Gardens","Sidr Park","Road Afforestation in Asir","Smart Irrigation","Riyadh Urban Gardens","Native Plant Garden","Palm Cultivation Center"]
+    }
+  };
+
+  let currentLang = localStorage.getItem('lang') || 'ar';
+
+  function renderPlants(lang) {
+    const container = document.getElementById('plantsGrid');
+    if (!container) return;
+    const data = lang === 'ar' ? treesData : treesDataEn;
+    container.innerHTML = data.map(item => `
+      <div class="plant-card">
+        <i class="${item.icon}"></i>
+        <span>${item.name}</span>
+      </div>
+    `).join('');
+  }
+
+  function renderWhy(cards) {
+    const container = document.getElementById('whyGrid');
+    if (!container) return;
+    container.innerHTML = cards.map(c => `<div class="why-card"><i class="fas fa-gem"></i><h3><i class="fas fa-check-circle"></i> ${c.title}</h3><p>${c.desc}</p></div>`).join('');
+  }
+
+  function renderProjects(names) {
+    const container = document.getElementById('projectGrid');
+    if (!container) return;
+    const images = [
+      'https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'https://images.pexels.com/photos/7176379/pexels-photo-7176379.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'https://images.pexels.com/photos/1252896/pexels-photo-1252896.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'https://images.pexels.com/photos/626285/pexels-photo-626285.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'https://images.pexels.com/photos/2526001/pexels-photo-2526001.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'https://images.pexels.com/photos/7919/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600',
+      'https://images.pexels.com/photos/985585/pexels-photo-985585.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'https://images.pexels.com/photos/34950/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600'
+    ];
+    container.innerHTML = names.map((name, idx) => `
+      <div class="project-card">
+        <div class="project-img" style="background-image: url('${images[idx % images.length]}');"></div>
+        <div class="project-info"><i class="fas fa-leaf"></i> <h3>${name}</h3></div>
+      </div>
+    `).join('');
+  }
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+    const t = translations[lang];
+
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const key = el.getAttribute('data-key');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-key-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-key-placeholder');
+      if (t[key]) el.placeholder = t[key];
+    });
+
+    renderPlants(lang);
+    renderWhy(t.whyCards);
+    renderProjects(t.projectNames);
+  }
+
+  document.getElementById('langSwitchBtn').addEventListener('click', () => {
+    const newLang = currentLang === 'ar' ? 'en' : 'ar';
+    setLanguage(newLang);
+  });
+
+  setLanguage(currentLang);
+
+  // Responsive menu & smooth scroll
+  const menuIcon = document.getElementById('menuIcon');
+  const navLinks = document.getElementById('navLinks');
+  menuIcon.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#") return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
+      }
+    });
+  });
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+      }
+    });
+  }, { threshold: 0.1 });
+  sections.forEach(section => {
+    section.style.opacity = "0";
+    section.style.transform = "translateY(25px)";
+    section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    observer.observe(section);
+  });
+  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert(currentLang === 'ar' ? '🌴 شكراً لتواصلك! فريق نماء سيرد عليك قريباً.' : '🌴 Thank you for contacting us! Namaa team will reply shortly.');
+    e.target.reset();
+  });
+</script>
+</body>
+</html>
